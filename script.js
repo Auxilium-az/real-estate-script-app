@@ -1,37 +1,93 @@
 body {
-    font-family: Arial, sans-serif;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: #f8f9fb;
+    color: #1e1e1e;
+}
+
+header {
+    background: #111827;
+    color: white;
+    padding: 20px;
     text-align: center;
-    background-color: #f4f4f4;
+    position: sticky;
+    top: 0;
 }
 
-h1 {
-    margin-top: 20px;
+header h1 {
+    margin: 0;
+    font-size: 20px;
 }
 
-.button-container {
-    margin: 20px;
+header p {
+    margin: 5px 0 0;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+main {
+    padding: 20px;
+}
+
+.call-types {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 button {
-    padding: 12px 20px;
-    margin: 5px;
+    padding: 14px;
     font-size: 16px;
-    cursor: pointer;
     border: none;
-    border-radius: 6px;
-    background-color: #2c7be5;
+    border-radius: 8px;
+    background: #2563eb;
     color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: 0.2s ease;
 }
 
 button:hover {
-    background-color: #1a5ec8;
+    background: #1d4ed8;
 }
 
-.script-box {
-    width: 80%;
-    margin: 20px auto;
-    padding: 20px;
+.script-container {
+    margin-top: 25px;
     background: white;
-    border-radius: 8px;
-    text-align: left;
+    padding: 18px;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+}
+
+.section {
+    margin-bottom: 18px;
+}
+
+.section h3 {
+    margin-bottom: 8px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.section-content {
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+ul {
+    padding-left: 18px;
+}
+
+.copy-btn {
+    margin-top: 10px;
+    background: #10b981;
+}
+
+.copy-btn:hover {
+    background: #059669;
+}
+
+.placeholder {
+    opacity: 0.6;
+    font-style: italic;
 }
