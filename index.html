@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Real Estate Script Flow</title>
+    <meta charset="UTF-8">
+    <title>Agent Script Flow</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <h1>Real Estate Script Flow</h1>
+<header>
+    <h1>Agent Script Flow</h1>
+    <p>Select Call Type</p>
+</header>
 
-    <div class="button-container">
+<main>
+
+    <div class="call-types">
         <button onclick="showScript('buyer')">Buyer</button>
         <button onclick="showScript('seller')">Seller</button>
         <button onclick="showScript('investor')">Investor</button>
@@ -18,10 +25,12 @@
         <button onclick="showScript('openhouse')">Open House</button>
     </div>
 
-    <div id="script-display" class="script-box">
-        <p>Select a call type to view the script.</p>
+    <div id="scriptContainer" class="script-container">
+        <p class="placeholder">Choose a call type to load your script.</p>
     </div>
 
-    <script src="script.js"></script>
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>
