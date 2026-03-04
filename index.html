@@ -1,1 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Real Estate Script Flow</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
+    <h1>Real Estate Script Flow</h1>
+
+    <div class="button-container">
+        <button onclick="showScript('buyer')">Buyer</button>
+        <button onclick="showScript('seller')">Seller</button>
+        <button onclick="showScript('investor')">Investor</button>
+        <button onclick="showScript('expired')">Expired</button>
+        <button onclick="showScript('fsbo')">FSBO</button>
+        <button onclick="showScript('referral')">Referral</button>
+        <button onclick="showScript('openhouse')">Open House</button>
+    </div>
+
+    <div id="script-display" class="script-box">
+        <p>Select a call type to view the script.</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
