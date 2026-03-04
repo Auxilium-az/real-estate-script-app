@@ -1,65 +1,86 @@
 const scripts = {
-    buyer: `
-        <h2>Buyer Script</h2>
-        <h3>Opening:</h3>
-        <p>"Hi [Name], this is [Your Name]. I saw you were looking at homes and wanted to see what you're hoping to accomplish."</p>
+    buyer: {
+        opening: `"Hi [Name], this is [Your Name]. I saw you were looking at homes and wanted to learn more about what you're hoping to accomplish."`,
+        questions: [
+            "Are you currently renting or owning?",
+            "What areas are you most interested in?",
+            "Have you spoken with a lender yet?",
+            "When would you ideally like to move?"
+        ],
+        objections: {
+            "We're just browsing": "Totally understand. Most buyers start there. If the right home popped up, would you want to know about it?",
+            "We have an agent": "That’s great. If anything changes, I’m always here as a resource."
+        }
+    },
 
-        <h3>Questions to Ask:</h3>
-        <ul>
-            <li>Are you currently renting or owning?</li>
-            <li>What price range are you comfortable with?</li>
-            <li>Are you already pre-approved?</li>
-            <li>When are you hoping to move?</li>
-        </ul>
+    seller: {
+        opening: `"Hi [Name], this is [Your Name]. I specialize in helping homeowners maximize their equity in today's market."`,
+        questions: [
+            "Have you considered selling in the next 6–12 months?",
+            "What would you need to net from the sale?",
+            "Where would you move next?"
+        ],
+        objections: {
+            "We're not ready": "Totally fair. Would it hurt to know what your home could sell for in today's market?",
+            "We’ll use the same agent": "I respect loyalty. Would you at least compare strategies before making a final decision?"
+        }
+    },
 
-        <h3>Common Objections:</h3>
-        <p><strong>"We're just browsing."</strong><br>
-        Response: "Totally understand. Most buyers start there. If the right home popped up, would you want to know about it?"</p>
-    `,
-
-    seller: `
-        <h2>Seller Script</h2>
-        <h3>Opening:</h3>
-        <p>"Hi [Name], this is [Your Name]. I specialize in helping homeowners get top dollar in today's market."</p>
-
-        <h3>Questions:</h3>
-        <ul>
-            <li>Have you considered selling this year?</li>
-            <li>What would you need to net from the sale?</li>
-            <li>Where would you move next?</li>
-        </ul>
-
-        <h3>Objection:</h3>
-        <p><strong>"We're not ready."</strong><br>
-        Response: "That makes sense. Would it hurt to know what your home could sell for in today's market?"</p>
-    `,
-
-    investor: `
-        <h2>Investor Script</h2>
-        <p>Focus on ROI, cash flow, and acquisition criteria.</p>
-    `,
-
-    expired: `
-        <h2>Expired Listing Script</h2>
-        <p>"I noticed your home came off the market. What do you think stopped it from selling?"</p>
-    `,
-
-    fsbo: `
-        <h2>FSBO Script</h2>
-        <p>"I saw you're selling on your own. If I brought you a qualified buyer, would you cooperate with an agent?"</p>
-    `,
-
-    referral: `
-        <h2>Referral Script</h2>
-        <p>"Hi [Name], I was referred to you by [Referral Source]."</p>
-    `,
-
-    openhouse: `
-        <h2>Open House Script</h2>
-        <p>"What did you think of the home? Are you currently working with an agent?"</p>
-    `
+    investor: {
+        opening: `"Hi [Name], I work with investors acquiring properties with strong ROI. Are you currently buying?"`,
+        questions: [
+            "What price range are you targeting?",
+            "Are you looking for flips or rentals?",
+            "What return are you aiming for?"
+        ],
+        objections: {
+            "Send deals first": "Absolutely. So I send the right ones, what’s your exact criteria?"
+        }
+    }
 };
 
 function showScript(type) {
-    document.getElementById("script-display").innerHTML = scripts[type];
+    const container = document.getElementById("scriptContainer");
+    const script = scripts[type];
+
+    if (!script) {
+        container.innerHTML = "<p>Script coming soon.</p>";
+        return;
+    }
+
+    let objectionsHTML = "";
+    for (let key in script.objections) {
+        objectionsHTML += `<p><strong>${key}</strong><br>${script.objections[key]}</p>`;
+    }
+
+    container.innerHTML = `
+        <div class="section">
+            <h3>Opening Script</h3>
+            <div class="section-content">${script.opening}</div>
+        </div>
+
+        <div class="section">
+            <h3>Questions to Ask</h3>
+            <div class="section-content">
+                <ul>
+                    ${script.questions.map(q => `<li>${q}</li>`).join("")}
+                </ul>
+            </div>
+        </div>
+
+        <div class="section">
+            <h3>Common Objections & Responses</h3>
+            <div class="section-content">
+                ${objectionsHTML}
+            </div>
+        </div>
+
+        <button class="copy-btn" onclick="copyScript()">Copy Full Script</button>
+    `;
+}
+
+function copyScript() {
+    const text = document.getElementById("scriptContainer").innerText;
+    navigator.clipboard.writeText(text);
+    alert("Script copied to clipboard!");
 }
