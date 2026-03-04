@@ -33,6 +33,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
+          artifact_name: real-estate-script
 
       - name: Deploy to GitHub Pages
         id: deployment
